@@ -26,7 +26,8 @@ class VisibilityEnum(IntEnum):
 
 
 class BudgetType(models.Model):
-    """Here user can add type of expense """
+    """Here user can add type of expense example food, travel,
+    accomdation etc"""
     name = models.CharField(max_length=200)
 
 
@@ -53,7 +54,7 @@ class Dream(models.Model):
         of expenses"""
         return Budget.objects.filter(
             dream=self.pk
-        ).aggregate(sum=(Sum('amount', Value(0))))['sum']
+        ).aggregate(sum=(Sum('amount')))
     total_budget = property(_calculate_total_budget)
 
 
