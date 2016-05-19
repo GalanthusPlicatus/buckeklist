@@ -55,7 +55,7 @@ class Dream(models.Model):
         return Budget.objects.filter(
             dream=self.pk
         ).aggregate(sum=(Sum('amount')))
-    total_budget = property(_calculate_total_budget)
+    total_budget = property(_calculate_total_budget)       
 
 
 class Budget(models.Model):

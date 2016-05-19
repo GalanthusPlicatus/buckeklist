@@ -40,6 +40,7 @@ class ModelTestCase(TestCase):
         )
         self.assertEqual(Budget.objects.count(), 1)
         self.assertEqual(Dream.objects.count(), 1)
+        # self.assertEqual(dream.total_budget, 2000.00)
         # print dream.total_budget
 
     def test_calcalation_of_budget_many_budgettype(self):
@@ -82,5 +83,5 @@ class ModelTestCase(TestCase):
             BudgetType.objects.count()
         )
         self.assertEqual(Dream.objects.count(), 1)
+        # self.assertEqual(dream.total_budget, 11000.00)
         # print dream.total_budget
-
