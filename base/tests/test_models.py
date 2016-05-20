@@ -1,5 +1,5 @@
-from django.test import TestCase, RequestFactory, Client
 from base.models import Dream, Budget, BudgetType
+from django.test import TestCase, RequestFactory, Client
 
 
 class ModelTestCase(TestCase):
@@ -40,11 +40,13 @@ class ModelTestCase(TestCase):
         )
         self.assertEqual(Budget.objects.count(), 1)
         self.assertEqual(Dream.objects.count(), 1)
-        # self.assertEqual(dream.total_budget, 2000.00)
-        # print dream.total_budget
+        self.assertEqual(dream.total_budget, 2000.00)
+        print dream.total_budget
 
     def test_calcalation_of_budget_many_budgettype(self):
-        "Test to check total budget calculation with multiple type of expenses."
+        """Test to check total budget calculation with multiple type of
+        expenses.
+        """
         self.assertEqual(Dream.objects.count(), 0)
         # create dream object
         dream = Dream.objects.create(
@@ -83,5 +85,5 @@ class ModelTestCase(TestCase):
             BudgetType.objects.count()
         )
         self.assertEqual(Dream.objects.count(), 1)
-        # self.assertEqual(dream.total_budget, 11000.00)
+        self.assertEqual(dream.total_budget, 11000.00)
         # print dream.total_budget
