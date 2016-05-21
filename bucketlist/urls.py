@@ -23,3 +23,6 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls',
         namespace='rest_framework'))
 ]
+
+admin.site.site_title = 'Bucket List'
+admin.site.site_header = 'Bucket List'

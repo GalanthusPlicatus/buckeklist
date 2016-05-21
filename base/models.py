@@ -32,8 +32,10 @@ class BudgetType(models.Model):
 
 
 class Dream(models.Model):
-    STATUS_CHOICES = [(int(enum_choice), enum_choice.name) for enum_choice in StatusEnum]
-    VISIBILITY_CHOICES = [(int(enum_choice), enum_choice.name) for enum_choice in VisibilityEnum]
+    STATUS_CHOICES = [(int(
+        enum_choice), enum_choice.name) for enum_choice in StatusEnum]
+    VISIBILITY_CHOICES = [(
+        int(enum_choice), enum_choice.name) for enum_choice in VisibilityEnum]
     name = models.CharField(max_length=200)
     description = models.CharField(null=True, blank=True, max_length=255)
     visibility = models.PositiveSmallIntegerField(
@@ -44,9 +46,13 @@ class Dream(models.Model):
         choices=STATUS_CHOICES,
         default=int(StatusEnum.created)
     )
-    created_by = models.ForeignKey(User, blank=True, null=True, related_name="dreamer", on_delete=models.SET_NULL)
+    created_by = models.ForeignKey(
+        User, blank=True, null=True,
+        related_name="dreamer", on_delete=models.SET_NULL
+    )
     created_at = models.DateTimeField(auto_now_add=True, null=True)
-    updated_by = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
+    updated_by = models.ForeignKey(
+        User, blank=True, null=True, on_delete=models.SET_NULL)
     updated_at = models.DateTimeField(auto_now=True, null=True)
 
     def _calculate_total_budget(self):
