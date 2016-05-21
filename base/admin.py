@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from base.models import Dream, Budget
+from base.models import Dream, Budget, BudgetType
 
 
 class DreamAdmin(admin.ModelAdmin):
@@ -36,7 +36,10 @@ class BudgetAdmin(admin.ModelAdmin):
         return obj.dream.name
 
     def get_budget_type(self, obj):
-        return obj.budget_type.name
+        if obj.budget_type is not None:
+            return obj.budget_type.name
+        else:
+            return None
 
 
 admin.site.register(Budget, BudgetAdmin)
