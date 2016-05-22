@@ -22,6 +22,10 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls',
         namespace='rest_framework'))
+
+    # Dream views
+    url(r'^dream$', DreamsListApi.as_view, name='dream_list_view')
+
 ]
 
 admin.site.site_title = 'Bucket List'
