@@ -8,14 +8,14 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class StatusEnum(IntEnum):
-    unknown = 0
-    created = 1
-    planned = 2
-    prosessing = 3
-    postponed = 4
-    achieved = 5
-    dropped = 6
+# class StatusEnum(IntEnum):
+#     unknown = 0
+#     created = 1
+#     planned = 2
+#     prosessing = 3
+#     postponed = 4
+#     achieved = 5
+#     dropped = 6
 
 
 # class VisibilityEnum(IntEnum):
@@ -35,24 +35,27 @@ class BudgetType(models.Model):
 
 
 class Dream(models.Model):
-    PUBLIC = 'PUBLIC'
-    PRIVATE = 'PRIVATE'
-    SHARED = 'SHARED'
+    """Create your Own Dream and Go ahead"""
+    PUB = 'PUBLIC'
+    PRI = 'PRIVATE'
+    SHD = 'SHARED'
     VISIBILITY_CHOICES = (
-        (PUBLIC, 'public'),
-        (PRIVATE, 'private'),
-        (SHARED, 'shared')
+        (PUB, 'public'),
+        (PRI, 'private'),
+        (SHD, 'shared')
     )
-
-    STATUS_CHOICES = [(int(
-        enum_choice), enum_choice.name) for enum_choice in StatusEnum]
+    STATUS_CHOICES = (
+        ('CRD', 'created'),
+        ('PLD', 'planned'),
+        ('PROG', 'prosessing'),
+        ('POST', 'postponed'),
+        ('ACD', 'achieved'),
+        ('DRD', 'dropped')
+    )
     name = models.CharField(max_length=200)
     description = models.CharField(null=True, blank=True, max_length=255)
-    visibility = models.CharField(max_length=8, choices=VISIBILITY_CHOICES)
-    status = models.PositiveSmallIntegerField(
-        choices=STATUS_CHOICES,
-        default=int(StatusEnum.created)
-    )
+    visibility = models.CharField(max_length=3, choices=VISIBILITY_CHOICES)
+    status = models.CharField(max_length=4, choices=STATUS_CHOICES)
     created_by = models.ForeignKey(
         User, blank=True, null=True,
         related_name="dreamer", on_delete=models.SET_NULL
