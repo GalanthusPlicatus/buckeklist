@@ -24,7 +24,7 @@ urlpatterns = [
         namespace='rest_framework'))
 
     # Dream views
-    url(r'^dream$', DreamsListApi.as_view, name='dream_list_view')
+    # url(r'^dream$', DreamsListApi.as_view(), name='dream_list_view'),
 
 ]
 

@@ -8,5 +8,7 @@ from rest_framework import authentication, permissions
 
 class DreamsListApi(APIView):
     """To view all dreams in the list"""
+    
+
 
     pass

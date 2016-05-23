@@ -63,9 +63,15 @@ class Dream(models.Model):
         ).aggregate(sum=(Sum('amount')))['sum']
     total_budget = property(_calculate_total_budget)
 
+    def __str__(self):
+        return self.name
+
 
 class Budget(models.Model):
     """Expenses for trip"""
     budget_type = models.ForeignKey(BudgetType, blank=True, null=True)
     amount = models.DecimalField(max_digits=12, decimal_places=2)
     dream = models.ForeignKey(Dream)
+
+    def __str__(self):
+        return '%s %s' % (self.amount, self.dream)
