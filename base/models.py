@@ -18,11 +18,11 @@ class StatusEnum(IntEnum):
     dropped = 6
 
 
-class VisibilityEnum(IntEnum):
-    unknown = 0
-    public = 1
-    private = 2
-    shared = 3
+# class VisibilityEnum(IntEnum):
+#     unknown = 0
+#     public = 1
+#     private = 2
+#     shared = 3
 
 
 class BudgetType(models.Model):
@@ -30,18 +30,25 @@ class BudgetType(models.Model):
     accomdation etc"""
     name = models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.name
+
 
 class Dream(models.Model):
+    PUBLIC = 'PUBLIC'
+    PRIVATE = 'PRIVATE'
+    SHARED = 'SHARED'
+    VISIBILITY_CHOICES = (
+        (PUBLIC, 'public'),
+        (PRIVATE, 'private'),
+        (SHARED, 'shared')
+    )
+
     STATUS_CHOICES = [(int(
         enum_choice), enum_choice.name) for enum_choice in StatusEnum]
-    VISIBILITY_CHOICES = [(
-        int(enum_choice), enum_choice.name) for enum_choice in VisibilityEnum]
     name = models.CharField(max_length=200)
     description = models.CharField(null=True, blank=True, max_length=255)
-    visibility = models.PositiveSmallIntegerField(
-        choices=VISIBILITY_CHOICES,
-        default=int(VisibilityEnum.unknown)
-    )
+    visibility = models.CharField(max_length=8, choices=VISIBILITY_CHOICES)
     status = models.PositiveSmallIntegerField(
         choices=STATUS_CHOICES,
         default=int(StatusEnum.created)
