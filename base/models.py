@@ -36,13 +36,13 @@ class BudgetType(models.Model):
 
 class Dream(models.Model):
     """Create your Own Dream and Go ahead"""
-    PUB = 'PUBLIC'
-    PRI = 'PRIVATE'
-    SHD = 'SHARED'
+    PUBLIC = 'PUB'
+    PRIVATE = 'PRI'
+    SHARED = 'SHD'
     VISIBILITY_CHOICES = (
-        (PUB, 'public'),
-        (PRI, 'private'),
-        (SHD, 'shared')
+        (PUBLIC, 'public'),
+        (PRIVATE, 'private'),
+        (SHARED, 'shared')
     )
     STATUS_CHOICES = (
         ('CRD', 'created'),
