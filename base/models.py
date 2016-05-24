@@ -8,23 +8,6 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-# class StatusEnum(IntEnum):
-#     unknown = 0
-#     created = 1
-#     planned = 2
-#     prosessing = 3
-#     postponed = 4
-#     achieved = 5
-#     dropped = 6
-
-
-# class VisibilityEnum(IntEnum):
-#     unknown = 0
-#     public = 1
-#     private = 2
-#     shared = 3
-
-
 class BudgetType(models.Model):
     """Here user can add type of expense example food, travel,
     accomdation etc"""
@@ -39,18 +22,24 @@ class Dream(models.Model):
     PUBLIC = 'PUB'
     PRIVATE = 'PRI'
     SHARED = 'SHD'
+    CREATED = 'CRD'
+    PLANNED = 'PLD'
+    PROCESSING = 'PROG'
+    POSTPONED = 'POST'
+    ACHIEVED = 'ACD'
+    DROPPED = 'DRD'
     VISIBILITY_CHOICES = (
         (PUBLIC, 'public'),
         (PRIVATE, 'private'),
         (SHARED, 'shared')
     )
     STATUS_CHOICES = (
-        ('CRD', 'created'),
-        ('PLD', 'planned'),
-        ('PROG', 'prosessing'),
-        ('POST', 'postponed'),
-        ('ACD', 'achieved'),
-        ('DRD', 'dropped')
+        (CREATED, 'created'),
+        (PLANNED, 'planned'),
+        (PROCESSING, 'processing'),
+        (POSTPONED, 'postponed'),
+        (ACHIEVED, 'achieved'),
+        (DROPPED, 'dropped')
     )
     name = models.CharField(max_length=200)
     description = models.CharField(null=True, blank=True, max_length=255)
