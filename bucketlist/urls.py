@@ -18,13 +18,16 @@ from django.conf.urls import url, include
 from django.contrib import admin
 import rest_framework
 
+from base import urls
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    # url(r'^dream/$', include(base.urls)),
     url(r'^api-auth/', include('rest_framework.urls',
-        namespace='rest_framework'))
+        namespace='rest_framework')),
 
     # Dream views
-    # url(r'^dream$', DreamsListApi.as_view(), name='dream_list_view'),
 
 ]
 

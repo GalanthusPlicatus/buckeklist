@@ -5,8 +5,8 @@ from base.models import Dream, Budget, BudgetType
 
 
 class DreamSerializer(serializers.ModelSerializer):
-    id = IntegerField(label='ID', read_only=True)
-    name = CharField(max_length=200, read_only=True)
+    # id = IntegerField(label='ID', read_only=True)
+    # name = CharField(max_length=200, read_only=True)
 
     class Meta:
         model = Dream
