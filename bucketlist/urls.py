@@ -23,7 +23,7 @@ from base import urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # url(r'^dream/$', include(base.urls)),
+    url(r'^dream/', include('base.urls', namespace="dreams")),
     url(r'^api-auth/', include('rest_framework.urls',
         namespace='rest_framework')),
 

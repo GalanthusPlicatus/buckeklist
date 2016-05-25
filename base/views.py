@@ -12,5 +12,5 @@ from serializer import DreamSerializer
 
 class BucketListApi(generics.ListCreateAPIView):
     """To list all dreams"""
-    query_set = Dream.objects.all()
-    serializer = DreamSerializer
+    queryset = Dream.objects.all()
+    serializer_class = DreamSerializer
