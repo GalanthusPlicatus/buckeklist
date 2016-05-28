@@ -19,7 +19,7 @@ class BucketListApi(generics.ListCreateAPIView):
 class BucketListDetailApi(APIView):
     """Get dream details for specified dream_id"""
 
-    def get(self, request):
+    def get_dream(self, request):
         dream_id = request.GET.get('pk')
         dream_id
         raise Exception("fix")
