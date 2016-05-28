@@ -5,6 +5,8 @@ from base import views
 
 urlpatterns = [
     url(r'^api/', views.BucketListApi.as_view()),
+    url(r'^api/(?P<pk>[0-9]+)/$', views.BucketListDetailApi.as_view()),
+
 
 ]
 
