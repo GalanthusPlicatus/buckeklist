@@ -6,7 +6,7 @@ from django.shortcuts import render
 from rest_framework import generics
 
 from models import Dream
-from serializer import DreamSerializer
+from serializer import DreamSerializer, BudgetSerializer, BudgetTypeSerializer
 # Create your views here.
 
 
