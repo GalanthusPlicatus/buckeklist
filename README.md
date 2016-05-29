@@ -2,10 +2,12 @@
 
 
 Features for 1.0
+  Framework :
+    RestApi Views
   Adding/deleting a wish
   tracking progress regularly
   planning each wish(time table)
-  remainder about wish 
+  # remainder about wish 
   
 Feature 2.0
   budget management
