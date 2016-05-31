@@ -1,15 +1,18 @@
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-# from rest_framework import authentication, permissions
+from django.contrib.auth.models import User
+from rest_framework import authentication, permissions
 
 from django.shortcuts import render
 from rest_framework import generics
 
 from models import Dream
-from serializer import DreamSerializer, BudgetSerializer, BudgetTypeSerializer
+from serializer import(
+    DreamSerializer, BudgetSerializer, BudgetTypeSerializer,
+    UserSerializer
+)
 # Create your views here.
-
 
 
 class DreamListApi(generics.ListCreateAPIView):
@@ -43,3 +46,12 @@ class DreamDetailsApi(APIView):
         dream = self.get_object(pk)
         dream.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class UserListApi(generics.ListCreateAPIView):
+    # raise Exception("Fix me")
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
