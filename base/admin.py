@@ -10,7 +10,7 @@ class DreamAdmin(admin.ModelAdmin):
             return obj.created_by.username
         else:
             return 'None'
-    creator.short_description = 'Store created by'
+    creator.short_description = 'Dream created by'
 
     def save_model(self, request, obj, form, change):
         if obj.id:
