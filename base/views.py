@@ -48,10 +48,14 @@ class DreamDetailsApi(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class UserListApi(generics.ListCreateAPIView):
-    # raise Exception("Fix me")
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class UserListApi(APIView):
+    # raise Exception("fix")
+    authentication_classes = (authentication.TokenAuthentication,)
+    permission_classes = (permissions.IsAdminUser,)
 
-    def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user)
+    def get(self, request, format=None):
+        """
+        Return a list of all users.
+        """
+        usernames = [user.username for user in User.objects.all()]
+        return Response(usernames)
