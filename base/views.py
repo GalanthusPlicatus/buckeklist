@@ -48,14 +48,14 @@ class DreamDetailsApi(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class UserListApi(APIView):
-    # raise Exception("fix")
-    authentication_classes = (authentication.TokenAuthentication,)
-    permission_classes = (permissions.IsAdminUser,)
-
-    def get(self, request, format=None):
-        """
-        Return a list of all users.
-        """
-        usernames = [user.username for user in User.objects.all()]
-        return Response(usernames)
+# class UserListApi(APIView):
+#     # raise Exception("fix")
+#     authentication_classes = (authentication.TokenAuthentication,)
+#     permission_classes = (permissions.IsAdminUser,)
+#
+#     def get(self, request, format=None):
+#         """
+#         Return a list of all users.
+#         """
+#         usernames = [user.username for user in User.objects.all()]
+#         return Response(usernames)
