@@ -1,17 +1,22 @@
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from django.contrib.auth.models import User
 from rest_framework import authentication, permissions
-
-from django.shortcuts import render
+from rest_framework import viewsets
 from rest_framework import generics
 
+
+from base.serializers import UserSerializer
 from models import Dream
 from serializer import(
     DreamSerializer, BudgetSerializer, BudgetTypeSerializer,
     UserSerializer
 )
+
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User
+from django.shortcuts import render
+
 # Create your views here.
 
 
@@ -48,14 +53,17 @@ class DreamDetailsApi(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-# class UserListApi(APIView):
-#     # raise Exception("fix")
-#     authentication_classes = (authentication.TokenAuthentication,)
-#     permission_classes = (permissions.IsAdminUser,)
-#
-#     def get(self, request, format=None):
-#         """
-#         Return a list of all users.
-#         """
-#         usernames = [user.username for user in User.objects.all()]
-#         return Response(usernames)
+class UserViewSet(viewsets.ViewSet):
+    """
+    A simple ViewSet for listing or retrieving users.
+    """
+    def list(self, request):
+        queryset = User.objects.all()
+        serializer = UserSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def retrieve(self, request, pk=None):
+        queryset = User.objects.all()
+        user = get_object_or_404(queryset, pk=pk)
+        serializer = UserSerializer(user)
+        return Response(serializer.data)

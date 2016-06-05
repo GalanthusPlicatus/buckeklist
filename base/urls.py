@@ -8,7 +8,7 @@ urlpatterns = [
     url(r'^api/(?P<pk>[0-9]+)/$', views.DreamDetailsApi.as_view()),
 
     # Users
-    url(r'^api/users/$', views.UserListApi.as_view()),
+    # url(r'^api/users/$', views.UserListApi.as_view()),
 
 
 
