@@ -6,7 +6,7 @@ from rest_framework import viewsets
 from rest_framework import generics
 
 
-from base.serializers import UserSerializer
+# from base.serializers import UserSerializer
 from models import Dream
 from serializer import(
     DreamSerializer, BudgetSerializer, BudgetTypeSerializer,
@@ -21,18 +21,18 @@ from django.shortcuts import render
 
 
 class DreamListApi(generics.ListCreateAPIView):
-    """To list all dreams"""
+    """To list all available dreams"""
     queryset = Dream.objects.all()
     serializer_class = DreamSerializer
 
 
 class DreamDetailsApi(APIView):
+    """Some Comment"""
     def get_object(self, pk):
         try:
             return Dream.objects.get(pk=pk)
         except Dream.DoesNotExist:
             raise Http404
-    # raise Exception("Fix me")
 
     def get(self, request, pk, format=None):
         dream = self.get_object(pk)

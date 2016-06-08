@@ -34,11 +34,7 @@ class BudgetSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    dreams = serializers.PrimaryKeyRelatedField(
-            many=True,
-            queryset=Dream.objects.all()
-    )
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'dreams')
+        fields = ('id', 'username')
