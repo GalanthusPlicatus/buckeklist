@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import authentication, permissions
 from rest_framework import viewsets
 from rest_framework import generics
+from rest_framework.decorators import detail_route, list_route
 
 
 # from base.serializers import UserSerializer
@@ -62,7 +63,8 @@ class UserViewSet(viewsets.ViewSet):
         serializer = UserSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    def retrieve(self, request, pk=None):
+    @detail_route()
+    def user_details(self, request, pk=None):
         queryset = User.objects.all()
         user = get_object_or_404(queryset, pk=pk)
         serializer = UserSerializer(user)

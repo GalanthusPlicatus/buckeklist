@@ -12,7 +12,16 @@ urlpatterns = [
     ),
 
     # Users
-    url(r'^users/$', views.UserViewSet.as_view({'get': 'list'})),
+    url(
+        r'^users/$',
+        views.UserViewSet.as_view({'get': 'list'}),
+        name='users_list'
+    ),
+    url(
+        r'^users/(?P<pk>[0-9]+)/$',
+        views.UserViewSet.as_view({'get': 'user_details'}),
+        name='user_details'
+    ),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

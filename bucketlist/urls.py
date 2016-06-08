@@ -17,6 +17,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 import rest_framework
+# from base import routers
 
 from base import urls
 
@@ -27,7 +28,8 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls',
         namespace='rest_framework')),
     url(r'^auth/', include('rest_framework_social_oauth2.urls')),
-    url(r'^soc/', include('social.apps.django_app.urls', namespace='social'))
+    url(r'^soc/', include('social.apps.django_app.urls', namespace='social')),
+    # url(r'^', include(router.urls)),
 
 
 
