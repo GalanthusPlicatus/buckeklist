@@ -22,6 +22,17 @@ urlpatterns = [
         views.UserViewSet.as_view({'get': 'user_details'}),
         name='user_details'
     ),
+    url(
+        r'^users/(?P<user_pk>[0-9]+)/dreams/$',
+        views.UserDreamRelation.as_view({'get': 'user_dream_list'}),
+        name='user_dream_list'
+    ),
+    url(
+        r'^users/(?P<user_pk>[0-9]+)/dream/(?P<dream_pk>[0-9]+)/$',
+        views.UserDreamRelation.as_view({'get': 'user_dream_details'}),
+        name='user_dream_details'
+    ),
+
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

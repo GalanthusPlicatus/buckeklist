@@ -63,9 +63,37 @@ class UserViewSet(viewsets.ViewSet):
         serializer = UserSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    @detail_route()
     def user_details(self, request, pk=None):
         queryset = User.objects.all()
         user = get_object_or_404(queryset, pk=pk)
         serializer = UserSerializer(user)
         return Response(serializer.data)
+
+
+class UserDreamRelation(viewsets.ViewSet):
+
+    def user_dream_list(self, request, user_pk, dream_pk=None):
+        try:
+            user = User.objects.get(pk=user_pk)
+        except User.DoesNotExist:
+            return Http404
+        queryset = Dream.objects.filter(
+            created_by=user
+        )
+        serializer = DreamSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def user_dream_details(self, request, user_pk, dream_pk):
+        try:
+            user = User.objects.get(pk=user_pk)
+        except User.DoesNotExist:
+            return Http404
+        try:
+            queryset = Dream.objects.get(
+                pk=dream_pk,
+                created_by=user
+            )
+            serializer = DreamSerializer(queryset)
+            return Response(serializer.data)
+        except Dream.DoesNotExist:
+            return Response('Dream doesnt exit')
