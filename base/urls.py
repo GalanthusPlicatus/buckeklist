@@ -13,22 +13,22 @@ urlpatterns = [
 
     # Users
     url(
-        r'^users/$',
+        r'^user/$',
         views.UserViewSet.as_view({'get': 'list'}),
         name='users_list'
     ),
     url(
-        r'^users/(?P<pk>[0-9]+)/$',
+        r'^user/(?P<pk>[0-9]+)/$',
         views.UserViewSet.as_view({'get': 'user_details'}),
         name='user_details'
     ),
     url(
-        r'^users/(?P<user_pk>[0-9]+)/dreams/$',
+        r'^user/(?P<user_pk>[0-9]+)/dream/$',
         views.UserDreamRelation.as_view({'get': 'user_dream_list'}),
         name='user_dream_list'
     ),
     url(
-        r'^users/(?P<user_pk>[0-9]+)/dream/(?P<dream_pk>[0-9]+)/$',
+        r'^user/(?P<user_pk>[0-9]+)/dream/(?P<dream_pk>[0-9]+)/$',
         views.UserDreamRelation.as_view({'get': 'user_dream_details'}),
         name='user_dream_details'
     ),

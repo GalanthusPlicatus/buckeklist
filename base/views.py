@@ -28,7 +28,7 @@ class DreamListApi(generics.ListCreateAPIView):
 
 
 class DreamDetailsApi(APIView):
-    """Some Comment"""
+    """Operations on  Dreams"""
     def get_object(self, pk):
         try:
             return Dream.objects.get(pk=pk)
@@ -58,11 +58,13 @@ class UserViewSet(viewsets.ViewSet):
     """
     A simple ViewSet for listing or retrieving users.
     """
+    # Get list of users.
     def list(self, request):
         queryset = User.objects.all()
         serializer = UserSerializer(queryset, many=True)
         return Response(serializer.data)
 
+    # Get user details
     def user_details(self, request, pk=None):
         queryset = User.objects.all()
         user = get_object_or_404(queryset, pk=pk)
@@ -71,23 +73,25 @@ class UserViewSet(viewsets.ViewSet):
 
 
 class UserDreamRelation(viewsets.ViewSet):
-
+    """ Get dreams list and details for given User"""
+    # Gives list dreams for given user.
     def user_dream_list(self, request, user_pk, dream_pk=None):
         try:
             user = User.objects.get(pk=user_pk)
         except User.DoesNotExist:
-            return Http404
+            return Response('User doesnt exit', 404)
         queryset = Dream.objects.filter(
             created_by=user
         )
         serializer = DreamSerializer(queryset, many=True)
         return Response(serializer.data)
 
+    # Gives details of the dream for given user.
     def user_dream_details(self, request, user_pk, dream_pk):
         try:
             user = User.objects.get(pk=user_pk)
         except User.DoesNotExist:
-            return Http404
+            return Response('User doesnt exit', 404)
         try:
             queryset = Dream.objects.get(
                 pk=dream_pk,
@@ -96,4 +100,4 @@ class UserDreamRelation(viewsets.ViewSet):
             serializer = DreamSerializer(queryset)
             return Response(serializer.data)
         except Dream.DoesNotExist:
-            return Response('Dream doesnt exit')
+            return Response('Dream doesnt exit', 404)
