@@ -43,8 +43,16 @@ class Dream(models.Model):
     )
     name = models.CharField(max_length=200)
     description = models.CharField(null=True, blank=True, max_length=255)
-    visibility = models.CharField(max_length=3, choices=VISIBILITY_CHOICES)
-    status = models.CharField(max_length=4, choices=STATUS_CHOICES)
+    visibility = models.CharField(
+        max_length=3,
+        default='PUB',
+        choices=VISIBILITY_CHOICES
+    )
+    status = models.CharField(
+        max_length=4,
+        default='CRD',
+        choices=STATUS_CHOICES
+    )
     created_by = models.ForeignKey(
         User, blank=True, null=True,
         related_name="dreamer", on_delete=models.SET_NULL

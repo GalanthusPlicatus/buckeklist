@@ -17,8 +17,8 @@ class ModelTestCase(TestCase):
             description="chilling out",
         )
         self.assertEqual(Dream.objects.count(), 1)
-        # self.assertEqual(dream.status, 1)
-        # self.assertEqual(dream.visibility, 0)
+        self.assertEqual(dream.status, 'CRD')
+        self.assertEqual(dream.visibility, 'PUB')
 
         # print dream.created_by
 

@@ -24,11 +24,13 @@ class FirstTestForViewTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Dream.objects.count(), 1)
         self.assertEqual(Dream.objects.get().name, 'buy bucket')
+        # print
+        # self.assertIsNotNone(Dreeam)
 
         """test cases:
             1. check user is created
             2. is user authenticated
             3. created_by should not be null
             4. when dream object is created status and visibility should
-            have default values
+            have default values - did in test_models
         """
