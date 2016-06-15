@@ -1,6 +1,18 @@
 from base.models import Dream, Budget, BudgetType
 from django.test import TestCase, RequestFactory, Client
 
+""" Goals
+
+- The goals of the kind of testing outlined here are simplicity,loose or no
+coupling, and speed:
+- Tests should be as simple as possible, while exercising the
+application-under-test (AUT) completely.
+- Tests should run as quickly as possible,to encourage running them frequently.
+- Tests should avoid coupling with other tests, or with parts of the AUT which
+they are not responsible for testing.
+
+"""
+
 
 class ModelTestCase(TestCase):
     """TestCases to test Dream,Budget,BudgetType models.
@@ -87,3 +99,8 @@ class ModelTestCase(TestCase):
         self.assertEqual(Dream.objects.count(), 1)
         self.assertEqual(dream.total_budget, 11000.00)
         # print dream.total_budget
+
+
+    def test_budgettype_return(self):
+        b = BudgetType.create('travel')
+        self.assertEqual(b.name, 'travel')

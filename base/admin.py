@@ -41,5 +41,10 @@ class BudgetAdmin(admin.ModelAdmin):
         else:
             return None
 
-
 admin.site.register(Budget, BudgetAdmin)
+
+
+class BudgetTypeAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
+admin.site.register(BudgetType, BudgetTypeAdmin)
