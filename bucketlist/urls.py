@@ -14,9 +14,26 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
+import rest_framework
+# from base import routers
+
+from base import urls
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^api/', include('base.urls', namespace="api")),
+    url(r'^api-auth/', include('rest_framework.urls',
+        namespace='rest_framework')),
+    url(r'^auth/', include('rest_framework_social_oauth2.urls')),
+    url(r'^soc/', include('social.apps.django_app.urls', namespace='social')),
+    # url(r'^', include(router.urls)),
+
+
+
 ]
+
+admin.site.site_title = 'Bucket List'
+admin.site.site_header = 'Bucket List'
