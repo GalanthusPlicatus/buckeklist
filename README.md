@@ -10,7 +10,7 @@ Features for v1.0
   -- planning each wish(time table)
   -- reminder about wish 
   
-Features forv2.0
+Features for v2.0
   - budget management
   - after completing, writing about experience in detail
   
