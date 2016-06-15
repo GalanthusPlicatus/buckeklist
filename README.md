@@ -1,4 +1,4 @@
-# Bucket List
+# Bucket List [![Build Status](https://travis-ci.org/GalanthusPlicatus/bucketlist.svg?branch=master)](https://travis-ci.org/GalanthusPlicatus/bucketlist)
 
 
 Features for v1.0
