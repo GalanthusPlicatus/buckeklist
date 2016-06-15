@@ -1,4 +1,4 @@
-# buckeklist
+# bucketlist
 
 
 Features for 1.0
@@ -8,11 +8,11 @@ Features for 1.0
   Adding/deleting a wish
   tracking progress regularly
   planning each wish(time table)
-  # remainder about wish 
+  # reminder about wish 
   
 Feature 2.0
   budget management
-  after completing,Writing about experience in detail
+  after completing, writing about experience in detail
   
 <!--Road Map:-->
 <!--  First week : requirement gathering and modeling-->
