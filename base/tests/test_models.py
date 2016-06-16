@@ -100,7 +100,26 @@ class ModelTestCase(TestCase):
         self.assertEqual(dream.total_budget, 11000.00)
         # print dream.total_budget
 
+    def test_budgettype_str_representation(self):
+        bt = BudgetType(name='travel')
+        self.assertEqual(str(bt), 'travel')
 
-    def test_budgettype_return(self):
-        b = BudgetType.create('travel')
-        self.assertEqual(b.name, 'travel')
+    def test_dream_str_representation(self):
+        d = Dream(
+            name='test_dream',
+            description="chilling out",
+        )
+        self.assertEqual(str(d), 'test_dream')
+
+    def test_budget_str_representation(self):
+        d = Dream(
+            name='test_dream',
+            description="chilling out",
+        )
+        bt = BudgetType(name='travel')
+        b = Budget(
+            budget_type=bt,
+            dream=d,
+            amount=21.0
+        )
+        self.assertEqual(str(b), '21.0 test_dream')

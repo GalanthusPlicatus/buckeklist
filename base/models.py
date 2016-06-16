@@ -13,15 +13,8 @@ class BudgetType(models.Model):
     accomdation etc"""
     name = models.CharField(max_length=200)
 
-    @classmethod
-    def create(cls, name):
-        budget_type = cls(name=name)
-        # do something with the book
-        return budget_type
-
     def __str__(self):
         return self.name
-
 
 
 class Dream(models.Model):
